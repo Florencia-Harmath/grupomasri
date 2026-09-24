@@ -555,6 +555,13 @@
       box-shadow: 0 18px 42px rgba(13,62,120,.36);
     }
 
+    .agentforce-launcher.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);
+    }
+
     .agentforce-launcher-icon {
       width: 34px;
       height: 34px;
@@ -987,18 +994,29 @@
       agentforceReady = true;
       agentforceLauncher?.classList.remove('is-loading');
 
-      // Fuerza la disponibilidad del botón nativo si el deployment lo permite.
+      // Usamos únicamente el launcher personalizado para evitar que el botón nativo se superponga.
       try {
-        embeddedservice_bootstrap.utilAPI.showChatButton();
+        embeddedservice_bootstrap.utilAPI.hideChatButton();
       } catch (e) {
-        console.debug('Agentforce: el botón nativo se administrará desde el launcher personalizado.', e);
+        console.debug('Agentforce: no fue necesario ocultar el botón nativo.', e);
       }
+    });
+
+    // Mientras la ventana de Agentforce está abierta, ocultamos el launcher personalizado.
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', () => {
+      agentforceLauncher?.classList.add('is-hidden');
+    });
+
+    // Cuando el usuario cierra la ventana, recuperamos el launcher personalizado.
+    window.addEventListener('onEmbeddedMessagingWindowClosed', () => {
+      agentforceLauncher?.classList.remove('is-hidden');
     });
 
     agentforceLauncher?.addEventListener('click', async () => {
       if (agentforceReady && window.embeddedservice_bootstrap?.utilAPI?.launchChat) {
         try {
           await embeddedservice_bootstrap.utilAPI.launchChat();
+          agentforceLauncher?.classList.add('is-hidden');
         } catch (error) {
           console.error('No fue posible abrir Agentforce:', error);
           showAgentforceStatus('No fue posible abrir el asistente. Revisá la configuración del deployment y CORS en Salesforce.');
@@ -1017,7 +1035,7 @@
     function initEmbeddedMessaging() {
       try {
         embeddedservice_bootstrap.settings.language = 'es';
-        embeddedservice_bootstrap.settings.hideChatButtonOnLoad = false;
+        embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
 
         embeddedservice_bootstrap.init(
           '00Dfj00000Yu1tt',
