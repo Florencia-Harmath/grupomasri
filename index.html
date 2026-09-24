@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <meta name="referrer" content="origin" />
   <title>Grupo Masri | Solicitar información</title>
   <meta name="description" content="Consultá disponibilidad, precios y características de nuestros proyectos y conversá con el asistente virtual de Grupo Masri." />
 
@@ -400,34 +401,223 @@
       cursor: pointer;
     }
 
-    /* ===== FOOTER ===== */
+    /* ===== FOOTER · ESTÉTICA GRUPO MASRI ===== */
     .footer {
-      padding: 48px clamp(24px, 3.1vw, 62px);
-      background: #0b2d57;
-      color: rgba(255,255,255,.84);
+      position: relative;
+      overflow: hidden;
+      padding: 72px clamp(24px, 4.2vw, 76px) 30px;
+      background: #0d3768;
+      color: #fff;
     }
 
-    .footer-inner {
-      max-width: 1700px;
+    .footer::before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      right: -170px;
+      top: -250px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .footer-main {
+      position: relative;
+      z-index: 1;
+      max-width: 1500px;
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: minmax(300px, 1.45fr) .65fr .65fr;
+      gap: clamp(44px, 7vw, 120px);
+      align-items: start;
+    }
+
+    .footer-intro {
+      max-width: 590px;
     }
 
     .footer-brand {
-      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .footer-logo {
+      width: 84px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.26);
+      background: rgba(255,255,255,.06);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      letter-spacing: -.02em;
+      text-align: center;
+      line-height: .9;
+      box-shadow: inset 0 0 0 7px rgba(255,255,255,.025);
+    }
+
+    .footer-logo small {
+      display: block;
+      margin-bottom: 3px;
+      font-family: Inter, ui-sans-serif, sans-serif;
+      font-size: 8px;
+      letter-spacing: .08em;
+    }
+
+    .footer-logo strong {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .footer-brand-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(26px, 2.3vw, 38px);
+      font-weight: 500;
+      letter-spacing: -.025em;
     }
 
     .footer-copy {
-      max-width: 670px;
+      max-width: 560px;
       margin: 0;
+      color: rgba(255,255,255,.72);
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    .footer-col h3 {
+      margin: 7px 0 20px;
+      color: rgba(255,255,255,.52);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 13px;
+    }
+
+    .footer-links a {
+      width: fit-content;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.3;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .footer-links a:hover {
+      opacity: .7;
+      transform: translateX(3px);
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      max-width: 1500px;
+      margin: 55px auto 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,.48);
+      font-size: 12px;
+    }
+
+    /* ===== AGENTFORCE / ENHANCED WEB CHAT ===== */
+    .agentforce-launcher {
+      position: fixed;
+      right: 26px;
+      bottom: 24px;
+      z-index: 2147483001;
+      min-width: 178px;
+      height: 58px;
+      padding: 0 19px 0 14px;
+      border: 0;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      background: var(--masri-blue);
+      color: #fff;
+      box-shadow: 0 14px 36px rgba(13,62,120,.30);
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .agentforce-launcher:hover {
+      transform: translateY(-2px);
+      background: var(--masri-blue-dark);
+      box-shadow: 0 18px 42px rgba(13,62,120,.36);
+    }
+
+    .agentforce-launcher-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.16);
+    }
+
+    .agentforce-launcher-icon svg {
+      width: 19px;
+      height: 19px;
+      display: block;
+    }
+
+    .agentforce-launcher-text {
+      text-align: left;
+      line-height: 1.05;
+    }
+
+    .agentforce-launcher-text strong {
+      display: block;
       font-size: 14px;
-      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .agentforce-launcher-text span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255,255,255,.72);
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .agentforce-launcher.is-loading {
+      cursor: progress;
+      opacity: .88;
+    }
+
+    .agentforce-status {
+      position: fixed;
+      right: 26px;
+      bottom: 92px;
+      z-index: 2147483002;
+      max-width: min(340px, calc(100vw - 52px));
+      padding: 12px 15px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 12px;
+      background: #fff;
+      color: #3d3d3f;
+      box-shadow: 0 12px 32px rgba(0,0,0,.14);
+      font-size: 12px;
+      line-height: 1.45;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .agentforce-status.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 1050px) {
@@ -509,15 +699,54 @@
         min-height: 430px;
       }
 
-      .footer-inner {
-        flex-direction: column;
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-intro {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
         align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .agentforce-launcher {
+        right: 16px;
+        bottom: 16px;
+        min-width: 58px;
+        width: 58px;
+        padding: 0;
+        justify-content: center;
+      }
+
+      .agentforce-launcher-text {
+        display: none;
+      }
+
+      .agentforce-status {
+        right: 16px;
+        bottom: 84px;
       }
     }
 
     @media (max-width: 460px) {
       .call-button {
         display: none;
+      }
+
+      .footer {
+        padding-top: 54px;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .footer-intro {
+        grid-column: auto;
       }
 
       .lead-form input,
@@ -655,13 +884,59 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">GRUPO MASRI</div>
-      <p class="footer-copy">
-        Desarrollamos proyectos inmobiliarios desde el diseño hasta la entrega, acompañando tanto a quienes buscan su hogar como a quienes invierten a largo plazo.
-      </p>
+    <div class="footer-main">
+      <div class="footer-intro">
+        <div class="footer-brand">
+          <div class="footer-logo" aria-hidden="true">
+            <div><small>GRUPO</small><strong>MASRI</strong></div>
+          </div>
+          <div class="footer-brand-name">Grupo Masri</div>
+        </div>
+        <p class="footer-copy">
+          En Grupo Masri, potenciamos el paisaje urbano de Buenos Aires con desarrollos inmobiliarios que combinan diseño de vanguardia y solidez constructiva.
+        </p>
+      </div>
+
+      <nav class="footer-col" aria-label="Navegación del pie de página">
+        <h3>Navegación</h3>
+        <div class="footer-links">
+          <a href="https://grupomasri.ar/">Inicio</a>
+          <a href="https://grupomasri.ar/proyectos">Proyectos</a>
+          <a href="https://grupomasri.ar/nosotros">Nosotros</a>
+          <a href="https://grupomasri.ar/contacto">Contacto</a>
+        </div>
+      </nav>
+
+      <div class="footer-col">
+        <h3>Social</h3>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/grupomasri/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Grupo Masri. Todos los derechos reservados.</span>
+      <span>Desarrollos inmobiliarios · Buenos Aires</span>
     </div>
   </footer>
+
+  <!-- Lanzador visible de Agentforce. Usa la API oficial de Enhanced Web Chat. -->
+  <button id="agentforceLauncher" class="agentforce-launcher is-loading" type="button" aria-label="Abrir Asistente Virtual de Grupo Masri">
+    <span class="agentforce-launcher-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5.75C5 4.78 5.78 4 6.75 4h10.5C18.22 4 19 4.78 19 5.75v7.5c0 .97-.78 1.75-1.75 1.75H11l-4.35 3.48c-.65.52-1.65.06-1.65-.78V5.75Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M8.5 8.5h7M8.5 11.5h4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="agentforce-launcher-text">
+      <strong>Asistente virtual</strong>
+      <span>Agentforce</span>
+    </span>
+  </button>
+  <div id="agentforceStatus" class="agentforce-status" role="status" aria-live="polite"></div>
 
   <script>
     (function () {
@@ -692,10 +967,57 @@
   </script>
 
   <!-- Salesforce Enhanced Messaging / Agentforce -->
-  <script type='text/javascript'>
+  <script type="text/javascript">
+    const agentforceLauncher = document.getElementById('agentforceLauncher');
+    const agentforceStatus = document.getElementById('agentforceStatus');
+    let agentforceReady = false;
+
+    function showAgentforceStatus(message) {
+      if (!agentforceStatus) return;
+      agentforceStatus.textContent = message;
+      agentforceStatus.classList.add('show');
+      window.clearTimeout(showAgentforceStatus._timer);
+      showAgentforceStatus._timer = window.setTimeout(() => {
+        agentforceStatus.classList.remove('show');
+      }, 5000);
+    }
+
+    // Salesforce recomienda esperar este evento antes de usar utilAPI.launchChat().
+    window.addEventListener('onEmbeddedMessagingButtonCreated', () => {
+      agentforceReady = true;
+      agentforceLauncher?.classList.remove('is-loading');
+
+      // Fuerza la disponibilidad del botón nativo si el deployment lo permite.
+      try {
+        embeddedservice_bootstrap.utilAPI.showChatButton();
+      } catch (e) {
+        console.debug('Agentforce: el botón nativo se administrará desde el launcher personalizado.', e);
+      }
+    });
+
+    agentforceLauncher?.addEventListener('click', async () => {
+      if (agentforceReady && window.embeddedservice_bootstrap?.utilAPI?.launchChat) {
+        try {
+          await embeddedservice_bootstrap.utilAPI.launchChat();
+        } catch (error) {
+          console.error('No fue posible abrir Agentforce:', error);
+          showAgentforceStatus('No fue posible abrir el asistente. Revisá la configuración del deployment y CORS en Salesforce.');
+        }
+        return;
+      }
+
+      // Enhanced Web Chat requiere ejecutarse desde un origen HTTP/HTTPS autorizado.
+      if (window.location.protocol === 'file:') {
+        showAgentforceStatus('Agentforce no puede inicializarse abriendo el HTML como archivo local. Publicalo en un dominio HTTP/HTTPS autorizado en Salesforce.');
+      } else {
+        showAgentforceStatus('El asistente todavía está cargando. Si no aparece, verificá Domain, CORS y Trusted Domains for Inline Frames en Salesforce.');
+      }
+    });
+
     function initEmbeddedMessaging() {
       try {
         embeddedservice_bootstrap.settings.language = 'es';
+        embeddedservice_bootstrap.settings.hideChatButtonOnLoad = false;
 
         embeddedservice_bootstrap.init(
           '00Dfj00000Yu1tt',
@@ -707,14 +1029,17 @@
         );
       } catch (err) {
         console.error('Error loading Embedded Messaging: ', err);
+        agentforceLauncher?.classList.remove('is-loading');
+        showAgentforceStatus('Agentforce no pudo inicializarse. Revisá la consola del navegador para ver el detalle.');
       }
-    };
+    }
   </script>
 
   <script
-    type='text/javascript'
-    src='https://orgfarm-ebb673c44c-dev-ed.develop.my.site.com/ESWGrupoMasriWebChat1790216341354/assets/js/bootstrap.min.js'
-    onload='initEmbeddedMessaging()'>
+    type="text/javascript"
+    src="https://orgfarm-ebb673c44c-dev-ed.develop.my.site.com/ESWGrupoMasriWebChat1790216341354/assets/js/bootstrap.min.js"
+    onload="initEmbeddedMessaging()"
+    onerror="agentforceLauncher?.classList.remove('is-loading'); showAgentforceStatus('No se pudo cargar el script de Agentforce desde Salesforce.');">
   </script>
 </body>
 </html>
